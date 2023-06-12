@@ -19,7 +19,7 @@ export const Header = () => {
           url="https://react.dev"
           alt="React Logo"
           label="Visit React"
-          classNames="hover:drop-shadow-[0_0_32px_#61dafbaa]"
+          classNames="animate-spin-slow hover:drop-shadow-[0_0_32px_#61dafbaa]"
         />
       </div>
       <h1 className="text-5xl font-bold">Vite + React!</h1>

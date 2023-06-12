@@ -1,13 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Button } from './Button'
+import App from '@/App'
 
 const meta = {
-  component: Button,
+  title: 'App',
+  component: App,
   tags: ['autodocs']
-} satisfies Meta<typeof Button>
+} satisfies Meta<typeof App>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Primary: Story = {}
+export const Default: Story = {}

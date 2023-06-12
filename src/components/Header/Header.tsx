@@ -1,4 +1,3 @@
-import viteLogo from '/vite.svg'
 import reactLogo from '@/assets/react.svg'
 import { Logo } from '@/components'
 
@@ -7,7 +6,7 @@ export const Header = () => {
     <div className="mb-8">
       <div className="mb-8 flex justify-between gap-8 ">
         <Logo
-          src={viteLogo}
+          src="/vite.svg"
           url="https://vitejs.dev"
           alt="Vite Logo"
           label="Visit Vite"

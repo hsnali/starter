@@ -24,9 +24,9 @@ jobs:
         # 👇 Install dependencies
         run: yarn
         # 👇 Lint
-      - run: yarn lint
-
+        run: yarn lint
   test:
+    name: Test
     # Operating System
     runs-on: ubuntu-latest
     # Job steps
@@ -45,6 +45,7 @@ jobs:
         uses: paambaati/codeclimate-action@v4.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
           coverageLocations: |
             ${{github.workspace}}/coverage/storybook/lcov.lcov:lcov
 

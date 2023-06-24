@@ -17,7 +17,7 @@ jobs:
         run: yarn
         # 👇 Lint and test code
       - name: Lint
-        run: lint
+        run: yarn lint
       - name: Test
-        run: storybook:test:ci
+        run: yarn storybook:test:ci
 

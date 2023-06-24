@@ -17,12 +17,14 @@ type Story = StoryObj<typeof meta>
 
 export const Vite: Story = {
   args: {
-    src: '/vite.svg'
+    src: '/vite.svg',
+    alt: 'Vite Logo'
   }
 }
 
 export const React: Story = {
   args: {
-    src: '/src/assets/react.svg'
+    src: '/src/assets/react.svg',
+    alt: 'React Logo'
   }
 }

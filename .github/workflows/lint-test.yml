@@ -4,6 +4,10 @@ name: 'Lint'
 # Event for the workflow
 on: push
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 # List of jobs
 jobs:
   lint-test:

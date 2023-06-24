@@ -24,6 +24,7 @@ jobs:
         # 👇 Install dependencies
         run: yarn
         # 👇 Lint
+      - name: Lint
         run: yarn lint
   test:
     name: Test

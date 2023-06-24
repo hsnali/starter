@@ -40,8 +40,6 @@ jobs:
         # 👇 Install dependencies
         run: yarn
         # 👇 Lint and test code
-      - name: Echo
-        run: echo ${{github.workspace}}
       - name: Test
         run: yarn storybook:test:ci
       - name: Coverage

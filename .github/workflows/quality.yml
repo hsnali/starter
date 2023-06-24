@@ -40,11 +40,15 @@ jobs:
         # 👇 Install dependencies
         run: yarn
         # 👇 Lint and test code
+      - name: Echo
+        run: echo ${{github.workspace}}
       - name: Test
         run: yarn storybook:test:ci
       - name: Coverage
         uses: paambaati/codeclimate-action@v4.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-
+        with:
+          coverageLocations: |
+            ${{github.workspace}}/coverage/storybook/lcov.lcov:lcov
 

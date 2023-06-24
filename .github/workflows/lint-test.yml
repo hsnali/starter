@@ -7,7 +7,7 @@ on: push
 # List of jobs
 jobs:
   lint-test:
-    name: Lint & Test
+    name: Lint Test
     # Operating System
     runs-on: ubuntu-latest
     # Job steps

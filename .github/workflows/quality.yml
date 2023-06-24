@@ -1,5 +1,5 @@
 # Workflow name
-name: 'Lint & Test'
+name: 'Code Quality'
 
 # Event for the workflow
 on: push
@@ -24,10 +24,9 @@ jobs:
         # 👇 Install dependencies
         run: yarn
         # 👇 Lint
-      - name: Lint
-        run: yarn lint
+      - run: yarn lint
+
   test:
-    name: Test
     # Operating System
     runs-on: ubuntu-latest
     # Job steps

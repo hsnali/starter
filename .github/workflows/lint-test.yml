@@ -1,0 +1,23 @@
+# Workflow name
+name: 'Lint'
+
+# Event for the workflow
+on: push
+
+# List of jobs
+jobs:
+  chromatic-deployment:
+    # Operating System
+    runs-on: ubuntu-latest
+    # Job steps
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install dependencies
+        # 👇 Install dependencies with the same package manager used in the project (replace it as needed), e.g. yarn, npm, pnpm
+        run: yarn
+        # 👇 Adds Chromatic as a step in the workflow
+      - name: Lint
+        run: lint
+      - name: Test
+        run: storybook:test:ci
+

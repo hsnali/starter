@@ -12,7 +12,9 @@
     "coverage": "vitest run --coverage",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
-    "storybook:test": "test-storybook",
+    "storybook:test": "test-storybook --coverage",
+    "storybook:test:report": "nyc report --reporter=lcov --report-dir coverage/storybook",
+    "storybook:test:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"yarn storybook:build --quiet && npx http-server storybook-static --port 6006 --silent\" \"wait-on tcp:6006 && yarn storybook:test --maxWorkers=2 && yarn storybook:test:report\"",
     "chromatic": "chromatic"
   },
   "dependencies": {
@@ -21,6 +23,7 @@
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^7.0.23",
+    "@storybook/addon-coverage": "^0.0.8",
     "@storybook/addon-essentials": "^7.0.20",
     "@storybook/addon-interactions": "^7.0.20",
     "@storybook/addon-links": "^7.0.20",
@@ -37,6 +40,7 @@
     "autoprefixer": "^10.4.14",
     "axe-playwright": "^1.2.3",
     "chromatic": "^6.18.2",
+    "concurrently": "^8.2.0",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -44,6 +48,8 @@
     "eslint-plugin-react-refresh": "^0.3.4",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-storybook": "^0.6.12",
+    "http-server": "^14.1.1",
+    "nyc": "^15.1.0",
     "postcss": "^8.4.24",
     "prettier": "2.8.8",
     "prettier-plugin-tailwindcss": "^0.3.0",

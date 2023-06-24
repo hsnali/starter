@@ -12,9 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     # Job steps
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+      - uses: actions/checkout@v1
       - name: Install dependencies
         # 👇 Install dependencies
         run: yarn

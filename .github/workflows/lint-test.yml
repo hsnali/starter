@@ -42,4 +42,10 @@ jobs:
         # 👇 Lint and test code
       - name: Test
         run: yarn storybook:test:ci
+      - name: Coverage
+      - uses: paambaati/codeclimate-action@v4.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+          coverageLocations: |
+            ${{github.workspace}}/coverage/storybook/lcov.lcov:lcov
 

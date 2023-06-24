@@ -1,5 +1,5 @@
 # Workflow name
-name: 'Lint'
+name: 'Lint & Test'
 
 # Event for the workflow
 on: push
@@ -10,8 +10,24 @@ concurrency:
 
 # List of jobs
 jobs:
-  lint-test:
-    name: Lint & Test
+  lint:
+    name: Lint
+    # Operating System
+    runs-on: ubuntu-latest
+    # Job steps
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - name: Install dependencies
+        # 👇 Install dependencies
+        run: yarn
+        # 👇 Lint
+      - name: Lint
+        run: yarn lint
+  test:
+    name: Test
     # Operating System
     runs-on: ubuntu-latest
     # Job steps
@@ -24,8 +40,6 @@ jobs:
         # 👇 Install dependencies
         run: yarn
         # 👇 Lint and test code
-      - name: Lint
-        run: yarn lint
       - name: Test
         run: yarn storybook:test:ci
 

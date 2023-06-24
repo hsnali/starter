@@ -14,7 +14,7 @@
     "storybook:build": "storybook build",
     "storybook:test": "test-storybook --coverage",
     "storybook:test:report": "nyc report --reporter=lcov --report-dir coverage/storybook",
-    "storybook:test:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"yarn storybook:build --quiet && npx http-server storybook-static --port 6006 --silent\" \"wait-on tcp:6006 && yarn storybook:test --maxWorkers=2 && yarn storybook:test:report\"",
+    "storybook:test:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"yarn storybook:build --quiet && npx http-server storybook-static --port 6006\" \"wait-on tcp:6006 && yarn storybook:test --maxWorkers=2 && yarn storybook:test:report\"",
     "chromatic": "chromatic"
   },
   "dependencies": {

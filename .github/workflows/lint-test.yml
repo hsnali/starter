@@ -7,11 +7,15 @@ on: push
 # List of jobs
 jobs:
   lint-test:
+    name: Lint & Test
     # Operating System
     runs-on: ubuntu-latest
     # Job steps
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
+      - uses: uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
       - name: Install dependencies
         # 👇 Install dependencies
         run: yarn

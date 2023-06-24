@@ -1,0 +1,54 @@
+# Workflow name
+name: 'Code Quality'
+
+# Event for the workflow
+on: push
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+# List of jobs
+jobs:
+  lint:
+    name: Lint
+    # Operating System
+    runs-on: ubuntu-latest
+    # Job steps
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - name: Install dependencies
+        # 👇 Install dependencies
+        run: yarn
+        # 👇 Lint
+      - name: Lint
+        run: yarn lint
+  test:
+    name: Test
+    # Operating System
+    runs-on: ubuntu-latest
+    # Job steps
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - name: Install dependencies
+        # 👇 Install dependencies
+        run: yarn
+        # 👇 Lint and test code
+      - name: Echo
+        run: echo ${{github.workspace}}
+      - name: Test
+        run: yarn storybook:test:ci
+      - name: Coverage
+        uses: paambaati/codeclimate-action@v4.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageLocations: |
+            ${{github.workspace}}/coverage/storybook/lcov.info:lcov
+

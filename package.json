@@ -4,14 +4,17 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "storybook:build": "storybook build",
+    "storybook:test": "test-storybook --coverage --verbose",
+    "storybook:test:report": "nyc report --reporter=lcov --report-dir coverage/storybook",
+    "storybook:test:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"yarn storybook:build --quiet && npx http-server storybook-static --port 6006\" \"wait-on http://127.0.0.1:6006 && yarn storybook:test --maxWorkers=2 && yarn storybook:test:report\"",
     "chromatic": "chromatic"
   },
   "dependencies": {
@@ -19,12 +22,15 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@storybook/addon-a11y": "^7.0.23",
+    "@storybook/addon-coverage": "^0.0.8",
     "@storybook/addon-essentials": "^7.0.20",
     "@storybook/addon-interactions": "^7.0.20",
     "@storybook/addon-links": "^7.0.20",
     "@storybook/blocks": "^7.0.20",
     "@storybook/react": "^7.0.20",
     "@storybook/react-vite": "^7.0.20",
+    "@storybook/test-runner": "^0.11.0",
     "@storybook/testing-library": "^0.0.14-next.2",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
@@ -32,7 +38,9 @@
     "@typescript-eslint/parser": "^5.59.0",
     "@vitejs/plugin-react": "^4.0.0",
     "autoprefixer": "^10.4.14",
+    "axe-playwright": "^1.2.3",
     "chromatic": "^6.18.2",
+    "concurrently": "^8.2.0",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -40,6 +48,9 @@
     "eslint-plugin-react-refresh": "^0.3.4",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-storybook": "^0.6.12",
+    "http-server": "^14.1.1",
+    "nyc": "^15.1.0",
+    "playwright": "^1.35.1",
     "postcss": "^8.4.24",
     "prettier": "2.8.8",
     "prettier-plugin-tailwindcss": "^0.3.0",
@@ -49,6 +60,7 @@
     "typescript": "^5.0.2",
     "vite": "^4.3.9",
     "vite-tsconfig-paths": "^4.2.0",
-    "vitest": "^0.32.0"
+    "vitest": "^0.32.0",
+    "wait-on": "^7.0.1"
   }
 }

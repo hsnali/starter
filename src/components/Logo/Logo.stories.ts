@@ -16,7 +16,7 @@ type Story = StoryObj<typeof meta>
 
 export const Vite: Story = {
   args: {
-    src: '/vite.svg',
+    src: '/images/vite.svg',
     alt: 'Vite Logo'
   }
 }

@@ -1,4 +1,5 @@
 export * from './Button'
+export * from './CatFact'
 export * from './Footer'
 export * from './Header'
 export * from './Logo'

@@ -6,7 +6,7 @@ export const Header = () => {
     <div className="mb-8">
       <div className="mb-8 flex justify-between gap-8 ">
         <Logo
-          src="/vite.svg"
+          src="/images/vite.svg"
           url="https://vitejs.dev"
           alt="Vite Logo"
           label="Visit Vite"

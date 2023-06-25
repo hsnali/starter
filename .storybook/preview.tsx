@@ -1,6 +1,13 @@
 import React from 'react'
+
+import { initialize, mswLoader } from 'msw-storybook-addon'
 import type { Preview } from '@storybook/react'
+
 import '../src/index.css'
+
+// Initialize MSW
+initialize()
+
 const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
@@ -13,6 +20,8 @@ const preview: Preview = {
     layout: 'fullscreen',
     darkMode: ''
   },
+
+  loaders: [mswLoader],
 
   decorators: [
     (Story, { parameters }) => {

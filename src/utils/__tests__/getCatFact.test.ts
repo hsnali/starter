@@ -8,18 +8,6 @@ import { CAT_FACT_API, getCatFact } from '../getCatFact'
 
 // Add `fetch` polyfill.
 global.fetch = fetch
-
-const handlers = [
-  rest.get(CAT_FACT_API, (req, res, ctx) => {
-    return res(
-      ctx.status(500),
-      ctx.json({
-        fact: 'Cats are cute'
-      })
-    )
-  })
-]
-
 const server = setupServer()
 
 describe('utils/getCatFact', () => {

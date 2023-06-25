@@ -16,18 +16,19 @@ describe('utils/getCatFact', () => {
   afterAll(() => server.close())
 
   it('Should fetch a cat fact', async () => {
+    const testFact = 'Cats are cute'
     server.use(
       rest.get(CAT_FACT_API, (req, res, ctx) => {
         return res(
           ctx.json({
-            fact: 'Cats are cute'
+            fact: testFact
           })
         )
       })
     )
 
     const { fact } = await getCatFact()
-    expect(fact).toBe('Cats are cute')
+    expect(fact).toBe(testFact)
   })
 
   it('Should return error message', async () => {

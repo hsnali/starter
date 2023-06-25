@@ -30,7 +30,7 @@ export const CatFact = () => {
       )}
 
       {errorMessage && (
-        <p data-testid="cat-fact-error" className="text-center text-xs italic text-red-400">
+        <p data-testid="cat-fact-error" className="text-center text-xs italic text-red-800 dark:text-red-300">
           {errorMessage}
         </p>
       )}

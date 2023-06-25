@@ -71,5 +71,20 @@ export const Error: Story = {
         })
       ]
     }
+  },
+
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement)
+
+    const button = await canvas.findByRole('button')
+
+    await step('Should show error message', async () => {
+      await userEvent.click(button)
+
+      await waitFor(async () => {
+        const info = await canvas.findByTestId('cat-fact-error')
+        expect(info).toHaveTextContent('Something went wrong: Failed to fetch cat fact')
+      })
+    })
   }
 }

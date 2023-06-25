@@ -3,19 +3,19 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { userEvent, waitFor, within } from '@storybook/testing-library'
 import { rest } from 'msw'
 
+import { CAT_FACT_API } from '@/utils/getCatFact'
+
 import { CatFact } from './CatFact'
 
 const testFact = 'Cats are cute'
 
 const meta = {
   component: CatFact,
-  args: {
-    apiUrl: '/fact'
-  },
+
   parameters: {
     msw: {
       handlers: [
-        rest.get('/fact', (req, res, ctx) => {
+        rest.get(CAT_FACT_API, (req, res, ctx) => {
           return res(
             ctx.json({
               fact: testFact
@@ -54,5 +54,22 @@ export const Primary: Story = {
         expect(info).toHaveTextContent(testFact)
       })
     })
+  }
+}
+
+export const Error: Story = {
+  parameters: {
+    msw: {
+      handlers: [
+        rest.get(CAT_FACT_API, (req, res, ctx) => {
+          return res(
+            ctx.status(403),
+            ctx.json({
+              error: 'Cat fact not found'
+            })
+          )
+        })
+      ]
+    }
   }
 }

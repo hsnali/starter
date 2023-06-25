@@ -2,21 +2,18 @@ import { FC, useState } from 'react'
 
 import { getCatFact } from '@/utils/getCatFact'
 
-export type CatFactProps = {
-  apiUrl?: string
-}
-
-export const CatFact: FC<CatFactProps> = ({ apiUrl }) => {
+export const CatFact = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [info, setInfo] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleClick = async () => {
     setIsLoading(true)
     try {
-      const { fact } = await getCatFact(apiUrl)
+      const { fact } = await getCatFact()
       setInfo(fact)
     } catch (e) {
-      console.error(e)
+      setErrorMessage(`Something went wrong: ${e.message}`)
     }
     setIsLoading(false)
   }
@@ -29,6 +26,12 @@ export const CatFact: FC<CatFactProps> = ({ apiUrl }) => {
       {info && (
         <p data-testid="cat-fact-info" className="text-center text-xs italic text-gray-500">
           {info}
+        </p>
+      )}
+
+      {errorMessage && (
+        <p data-testid="cat-fact-error" className="text-center text-xs italic text-red-400">
+          {errorMessage}
         </p>
       )}
     </div>

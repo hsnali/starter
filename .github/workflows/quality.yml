@@ -44,13 +44,6 @@ jobs:
         run: yarn storybook:test:coverage
       - name: Test Vite
         run: yarn test:coverage
-      # - name: Coverage
-      #   uses: paambaati/codeclimate-action@v4.0.0
-      #   env:
-      #     CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-      #   with:
-      #     coverageLocations: |
-      #       ${{github.workspace}}/coverage/storybook/lcov.info:lcov
       - name: Coverage
         uses: codecov/codecov-action@v3
         env:

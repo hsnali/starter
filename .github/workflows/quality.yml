@@ -44,8 +44,8 @@ jobs:
         run: yarn storybook:test:coverage
       - name: Test Vite
         run: yarn test:coverage
-      - name: Upload coverage reports to Codecov
+      - name: Coverage
         uses: codecov/codecov-action@v3
-          env:
-            CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 

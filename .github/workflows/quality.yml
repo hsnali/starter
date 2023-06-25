@@ -40,13 +40,19 @@ jobs:
         # 👇 Install dependencies
         run: yarn
         # 👇 Lint and test code
-      - name: Test
-        run: yarn storybook:test:ci
+      - name: Test Storybook
+        run: yarn storybook:test:coverage
+      - name: Test Vite
+        run: yarn test:coverage
+      # - name: Coverage
+      #   uses: paambaati/codeclimate-action@v4.0.0
+      #   env:
+      #     CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+      #   with:
+      #     coverageLocations: |
+      #       ${{github.workspace}}/coverage/storybook/lcov.info:lcov
       - name: Coverage
-        uses: paambaati/codeclimate-action@v4.0.0
+        uses: codecov/codecov-action@v3
         env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        with:
-          coverageLocations: |
-            ${{github.workspace}}/coverage/storybook/lcov.info:lcov
+          env: CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 

@@ -7,8 +7,18 @@ export default defineConfig({
   server: {
     port: 3000
   },
+  resolve: {
+    alias: {
+      '@': '/src'
+    }
+  },
   plugins: [react(), tsconfigPaths()],
   test: {
-    include: ['src/**/*.test.{ts,tsx}']
+    include: ['src/**/*.test.{ts,tsx}'],
+    setupFiles: ['./src/tests/setup.ts'],
+    coverage: {
+      provider: 'istanbul',
+      reportsDirectory: './coverage/vite'
+    }
   }
 })

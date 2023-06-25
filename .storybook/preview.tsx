@@ -1,3 +1,4 @@
+import React from 'react'
 import type { Preview } from '@storybook/react'
 import '../src/index.css'
 const preview: Preview = {
@@ -8,8 +9,20 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/
       }
+    },
+    layout: 'fullscreen',
+    darkMode: ''
+  },
+
+  decorators: [
+    (Story, { parameters }) => {
+      return (
+        <div className={`${parameters.darkMode}`}>
+          <Story />
+        </div>
+      )
     }
-  }
+  ]
 }
 
 export default preview

@@ -3,11 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Header } from './Header'
 
 const meta = {
-  component: Header,
-  tags: ['autodocs'],
-  parameters: {
-    layout: 'fullscreen'
-  }
+  component: Header
 } satisfies Meta<typeof Header>
 
 export default meta

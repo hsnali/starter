@@ -4,7 +4,6 @@ import { Logo } from './Logo'
 
 const meta = {
   component: Logo,
-  tags: ['autodocs'],
   args: {
     alt: 'Logo',
     url: '/',

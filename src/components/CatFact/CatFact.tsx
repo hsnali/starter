@@ -23,6 +23,7 @@ export const CatFact = () => {
       <button onClick={handleClick} className={`${isLoading ? 'animate-spin' : ''} mb-2`}>
         <img className="w-8" src="/images/nyan.gif" alt="Nyan cat" />
       </button>
+
       {info && (
         <p data-testid="cat-fact-info" className="text-center text-xs italic text-gray-500">
           {info}

@@ -1,4 +1,3 @@
-import { rest } from 'msw'
 import { describe, expect, it } from 'vitest'
 
 import { mockCatFact } from '@/tests/handlers/mockCatFact'

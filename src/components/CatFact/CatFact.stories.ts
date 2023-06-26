@@ -51,7 +51,7 @@ export const Primary: Story = {
 export const Error: Story = {
   parameters: {
     msw: {
-      handlers: [mockCatFact({ status: 403, json: { error: 'Cat fact not found' } })]
+      handlers: [mockCatFact({ status: 500 })]
     }
   },
 

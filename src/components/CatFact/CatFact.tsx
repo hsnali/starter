@@ -20,11 +20,7 @@ export const CatFact = () => {
   }
 
   return (
-    <div className="absolute bottom-2 flex max-w-md flex-col items-center justify-center">
-      <button onClick={handleClick} className={`${isLoading ? 'animate-spin' : ''} mb-2`}>
-        <img className="w-8" src="/images/nyan.gif" alt="Nyan cat" />
-      </button>
-
+    <div className="absolute bottom-0 flex max-w-md flex-col items-center justify-center p-6">
       {info && (
         <p data-testid="cat-fact-info" className="text-center text-xs italic text-gray-500">
           {info}
@@ -36,6 +32,10 @@ export const CatFact = () => {
           {errorMessage}
         </p>
       )}
+
+      <button onClick={handleClick} className={`${isLoading ? 'animate-spin' : ''} mt-2`}>
+        <img className="w-8" src="/images/nyan.gif" alt="Nyan cat" />
+      </button>
     </div>
   )
 }

@@ -35,6 +35,7 @@ export const CatFact = () => {
 
       <button onClick={handleClick} className={`${isLoading ? 'animate-spin' : ''} mt-2`}>
         <img className="w-8" src="/images/nyan.gif" alt="Nyan cat" />
+        <span className="sr-only">Get a cat fact</span>
       </button>
     </div>
   )

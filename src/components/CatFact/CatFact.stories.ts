@@ -1,9 +1,8 @@
 import { expect } from '@storybook/jest'
 import type { Meta, StoryObj } from '@storybook/react'
 import { userEvent, waitFor, within } from '@storybook/testing-library'
-import { rest } from 'msw'
 
-import { CAT_FACT_API } from '@/utils/getCatFact'
+import { mockCatFact } from '@/tests/handlers/mockCatFact'
 
 import { CatFact } from './CatFact'
 
@@ -14,15 +13,7 @@ const meta = {
 
   parameters: {
     msw: {
-      handlers: [
-        rest.get(CAT_FACT_API, (req, res, ctx) => {
-          return res(
-            ctx.json({
-              fact: testFact
-            })
-          )
-        })
-      ]
+      handlers: [mockCatFact({ fact: testFact })]
     }
   }
 } satisfies Meta<typeof CatFact>
@@ -60,16 +51,7 @@ export const Primary: Story = {
 export const Error: Story = {
   parameters: {
     msw: {
-      handlers: [
-        rest.get(CAT_FACT_API, (req, res, ctx) => {
-          return res(
-            ctx.status(403),
-            ctx.json({
-              error: 'Cat fact not found'
-            })
-          )
-        })
-      ]
+      handlers: [mockCatFact({ status: 403, json: { error: 'Cat fact not found' } })]
     }
   },
 

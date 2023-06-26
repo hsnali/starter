@@ -9,7 +9,7 @@ type CatFactProps = {
 }
 
 export const mockCatFact = ({ fact, status = 200, json }: CatFactProps) =>
-  rest.get(CAT_FACT_API, (req, res, ctx) => {
+  rest.get(CAT_FACT_API, (_, res, ctx) => {
     return res(
       ctx.status(status),
       ctx.json({

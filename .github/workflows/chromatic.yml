@@ -11,7 +11,7 @@ concurrency:
 # List of jobs
 jobs:
   chromatic-deployment:
-    name: Upload
+    name: Chromatic Deployment
     # Operating System
     runs-on: ubuntu-latest
     # Job steps

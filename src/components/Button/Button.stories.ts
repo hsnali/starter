@@ -13,7 +13,9 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   play: async ({ canvasElement, step }) => {
-    const button = await within(canvasElement).findByRole('button')
+    const canvas = within(canvasElement)
+
+    const button = await canvas.findByRole('button')
 
     await step('Should have label', async () => {
       expect(button).toHaveTextContent('Count is 0')

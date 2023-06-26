@@ -13,7 +13,7 @@ export const CatFact = () => {
       const { fact } = await getCatFact()
       setInfo(fact)
     } catch (error) {
-      const message = (error as Error)?.message ?? 'Unknown error'
+      const message = (error as Error)?.message
       setErrorMessage(`Something went wrong: ${message}`)
     }
     setIsLoading(false)

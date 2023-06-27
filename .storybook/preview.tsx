@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { initialize, mswLoader } from 'msw-storybook-addon'
 import type { Preview } from '@storybook/react'
 
@@ -17,21 +15,10 @@ const preview: Preview = {
         date: /Date$/
       }
     },
-    layout: 'fullscreen',
-    darkMode: ''
+    layout: 'fullscreen'
   },
 
-  loaders: [mswLoader],
-
-  decorators: [
-    (Story, { parameters }) => {
-      return (
-        <div className={`${parameters.darkMode}`}>
-          <Story />
-        </div>
-      )
-    }
-  ]
+  loaders: [mswLoader]
 }
 
 export default preview

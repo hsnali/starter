@@ -5,7 +5,8 @@ import { userEvent, within } from '@storybook/testing-library'
 import { DarkMode } from './DarkMode'
 
 const meta = {
-  component: DarkMode
+  component: DarkMode,
+  parameters: {}
 } satisfies Meta<typeof DarkMode>
 
 export default meta

@@ -15,12 +15,16 @@ export const DarkMode = () => {
 
   useEffect(() => {
     setDarkMode(isDark)
-  }, [])
+  })
 
   return (
     <button onClick={toggleDarkMode} className="absolute right-4 top-4 rounded-full p-1">
       <span className="sr-only">Toggle Dark Mode</span>
-      {isDark ? <MoonIcon className="text-gray-100" /> : <SunIcon className="text-yellow-600" />}
+      {isDark ? (
+        <MoonIcon data-testid="dark-mode-moon" className="text-gray-100" />
+      ) : (
+        <SunIcon data-testid="dark-mode-sun" className="text-yellow-600" />
+      )}
     </button>
   )
 }

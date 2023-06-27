@@ -20,6 +20,7 @@ export default defineConfig({
     coverage: {
       provider: 'istanbul',
       reportsDirectory: './coverage/vite'
-    }
+    },
+    environment: 'jsdom'
   }
 })

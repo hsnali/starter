@@ -53,6 +53,7 @@
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-storybook": "^0.6.12",
     "http-server": "^14.1.1",
+    "jsdom": "^22.1.0",
     "msw": "^1.2.2",
     "msw-storybook-addon": "^1.8.0",
     "nyc": "^15.1.0",

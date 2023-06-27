@@ -33,6 +33,13 @@ export const Primary: Story = {
       const sunIcon = await canvas.findByTestId('dark-mode-sun')
       expect(sunIcon).toBeInTheDocument()
     })
+  }
+}
+
+export const Dark: Story = {
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement)
+    const button = await canvas.findByRole('button')
 
     await step('Should be toggle dark theme', async () => {
       const sunIcon = await canvas.findByTestId('dark-mode-sun')

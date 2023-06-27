@@ -27,7 +27,6 @@ type Story = StoryObj<typeof meta>
 export const Primary: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement)
-    const button = await canvas.findByRole('button')
 
     await step('Should be render initial sun icon', async () => {
       const sunIcon = await canvas.findByTestId('dark-mode-sun')
@@ -41,7 +40,7 @@ export const Dark: Story = {
     const canvas = within(canvasElement)
     const button = await canvas.findByRole('button')
 
-    await step('Should be toggle dark theme', async () => {
+    await step('Should toggle dark theme', async () => {
       const sunIcon = await canvas.findByTestId('dark-mode-sun')
       await userEvent.click(button)
 

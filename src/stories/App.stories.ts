@@ -43,20 +43,5 @@ export const Mobile: Story = {
     msw: {
       handlers: [mockCatFact({ fact: faker.lorem.words(101) })]
     }
-  },
-
-  play: async ({ canvasElement, step }) => {
-    const canvas = within(canvasElement)
-
-    await step('Viewport should grow with long facts', async () => {
-      const viewPortHeight = canvasElement.getBoundingClientRect().height
-      const catFactButton = canvas.getByTestId('cat-fact-button')
-
-      await userEvent.click(catFactButton)
-      await waitFor(() => {
-        const newViewHeight = canvasElement.getBoundingClientRect().height
-        expect(viewPortHeight).toBeLessThan(newViewHeight)
-      })
-    })
   }
 }

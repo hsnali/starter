@@ -27,7 +27,10 @@ export const CatFact = () => {
       </button>
 
       {info && (
-        <p data-testid="cat-fact-info" className="text-center text-xs italic text-gray-500">
+        <p
+          data-testid="cat-fact-info"
+          className="text-center text-xs italic text-gray-500 dark:text-gray-300"
+        >
           {info}
         </p>
       )}

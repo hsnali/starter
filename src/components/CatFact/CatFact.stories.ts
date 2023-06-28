@@ -48,6 +48,18 @@ export const Primary: Story = {
   }
 }
 
+export const LongFact: Story = {
+  parameters: {
+    msw: {
+      handlers: [
+        mockCatFact({
+          fact: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, fugit minus. Atque ad officia corporis ratione neque. Cumque qui sit perspiciatis sint modi, soluta, aut unde aspernatur nihil dolores vero consequatur harum eveniet voluptatum ut voluptatem nemo ratione ab rerum!'
+        })
+      ]
+    }
+  }
+}
+
 export const Error: Story = {
   parameters: {
     msw: {

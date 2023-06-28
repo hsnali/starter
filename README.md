@@ -7,6 +7,7 @@ Currently a single page app with:
 
  - React
  - Vitest
+ - Tailwind
  - Storybook
  - Chromatic
 

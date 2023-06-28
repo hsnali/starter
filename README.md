@@ -6,8 +6,8 @@ Just a little repo to scratch away at and play with front end tools
 Currently a single page app with:
 
  - React
- - Storybook
  - Vitest
+ - Storybook
  - Chromatic
 
 See a [preview](https://starter23.netlify.app/)

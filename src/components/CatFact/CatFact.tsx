@@ -21,7 +21,11 @@ export const CatFact = () => {
 
   return (
     <div className="flex max-w-md flex-col items-center justify-center md:absolute md:bottom-6">
-      <button onClick={handleClick} className={`${isLoading ? 'animate-spin' : ''} my-2 md:order-1`}>
+      <button
+        data-testid="cat-fact-button"
+        onClick={handleClick}
+        className={`${isLoading ? 'animate-spin' : ''} my-2 md:order-1`}
+      >
         <img className="w-8" src="/images/nyan.gif" alt="Nyan cat" />
         <span className="sr-only">Get a cat fact</span>
       </button>

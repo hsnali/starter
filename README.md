@@ -6,9 +6,14 @@ Just a little repo to scratch away at and play with front end tools
 Currently a single page app with:
 
  - React
- - Vitest
  - Tailwind
+ - Vite
+    - Vitest unit tests
  - Storybook
+    - Jest + Testing Library
+    - Interraction tests
+    - Accessibility tests
  - Chromatic
+    - Visual regression tests
 
 See a [preview](https://starter23.netlify.app/)

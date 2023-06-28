@@ -11,7 +11,7 @@ Currently a single page app with:
     - Vitest unit tests
  - Storybook
     - Jest + Testing Library
-    - Interraction tests
+    - Interaction tests
     - Accessibility tests
  - Chromatic
     - Visual regression tests

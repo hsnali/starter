@@ -15,5 +15,7 @@ Currently a single page app with:
     - Accessibility tests
  - Chromatic
     - Visual regression tests
+- Lighthouse
+    - performance budget
 
 See a [preview](https://starter23.netlify.app/)

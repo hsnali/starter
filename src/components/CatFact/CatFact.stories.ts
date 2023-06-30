@@ -1,3 +1,4 @@
+import { faker } from '@faker-js/faker'
 import { expect } from '@storybook/jest'
 import type { Meta, StoryObj } from '@storybook/react'
 import { userEvent, waitFor, within } from '@storybook/testing-library'
@@ -53,7 +54,7 @@ export const LongFact: Story = {
     msw: {
       handlers: [
         mockCatFact({
-          fact: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, fugit minus. Atque ad officia corporis ratione neque. Cumque qui sit perspiciatis sint modi, soluta, aut unde aspernatur nihil dolores vero consequatur harum eveniet voluptatum ut voluptatem nemo ratione ab rerum'
+          fact: faker.lorem.words(101)
         })
       ]
     }

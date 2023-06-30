@@ -10,9 +10,12 @@ concurrency:
 
 # List of jobs
 jobs:
+  setup:
+    uses: hsnali/starter/.github/workflows/install.yml@v1
+
   lint:
     name: Lint
-    uses: hsnali/starter/.github/workflows/install.yml@v1
+    needs: setup
     # Job steps
     steps:
         # 👇 Lint
@@ -20,7 +23,7 @@ jobs:
         run: yarn lint
   test:
     name: Test
-    uses: hsnali/starter/.github/workflows/install.yml@v1
+    needs: setup
     # Job steps
     steps:
         # 👇 Lint and test code

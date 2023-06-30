@@ -12,21 +12,17 @@ concurrency:
 jobs:
   lint:
     name: Lint
-    # Operating System
-    runs-on: ubuntu-latest
+    uses: hsnali/starter/.github/workflows/install.yml@v1
     # Job steps
     steps:
-      - uses: hsnali/starter/.github/workflows/install.yml@v1
         # 👇 Lint
       - name: Lint
         run: yarn lint
   test:
     name: Test
-    # Operating System
-    runs-on: ubuntu-latest
+    uses: hsnali/starter/.github/workflows/install.yml@v1
     # Job steps
     steps:
-      - uses: hsnali/starter/.github/workflows/install.yml@v1
         # 👇 Lint and test code
       - name: Test Storybook
         run: yarn storybook:test:coverage

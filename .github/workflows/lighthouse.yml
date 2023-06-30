@@ -1,0 +1,30 @@
+# Workflow name
+name: Lighthouse
+
+# Event for the workflow
+on: pull_request
+
+# List of jobs
+jobs:
+  build:
+    name: Performance Budget
+    # Operating System
+    runs-on: ubuntu-latest
+    # Environment variables
+    env:
+      PREVIEW_URL: https://deploy-preview-${{ github.event.pull_request.number }}--starter23.netlify.app
+    # Job steps
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        # 👇 Install dependencies
+        run: yarn
+      - name: Wait for Netlify
+        run: yarn wait-on $PREVIEW_URL
+      - name: Audit URLs using Lighthouse
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          urls: |
+            $PREVIEW_URL
+          budgetPath: ./budget.json
+          uploadArtifacts: true

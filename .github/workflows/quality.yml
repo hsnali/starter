@@ -11,7 +11,7 @@ concurrency:
 # List of jobs
 jobs:
   setup:
-    uses: hsnali/starter/.github/workflows/install.yml@${{github.ref}}
+    uses: ./.github/workflows/install.yml
 
   lint:
     name: Lint

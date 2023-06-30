@@ -16,13 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     # Job steps
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '18.x'
-      - name: Install dependencies
-        # 👇 Install dependencies
-        run: yarn
+      - uses: hsnali/starter/.github/workflows/install.yml@v1
         # 👇 Lint
       - name: Lint
         run: yarn lint
@@ -32,13 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     # Job steps
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '18.x'
-      - name: Install dependencies
-        # 👇 Install dependencies
-        run: yarn
+      - uses: hsnali/starter/.github/workflows/install.yml@v1
         # 👇 Lint and test code
       - name: Test Storybook
         run: yarn storybook:test:coverage

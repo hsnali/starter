@@ -10,22 +10,35 @@ concurrency:
 
 # List of jobs
 jobs:
-  setup:
-    uses: ./.github/workflows/install.yml
-
   lint:
     name: Lint
-    needs: setup
+    # Operating System
+    runs-on: ubuntu-latest
     # Job steps
     steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - name: Install dependencies
+        # 👇 Install dependencies
+        run: yarn
         # 👇 Lint
       - name: Lint
         run: yarn lint
   test:
     name: Test
-    needs: setup
+    # Operating System
+    runs-on: ubuntu-latest
     # Job steps
     steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - name: Install dependencies
+        # 👇 Install dependencies
+        run: yarn
         # 👇 Lint and test code
       - name: Test Storybook
         run: yarn storybook:test:coverage
@@ -35,4 +48,3 @@ jobs:
         uses: codecov/codecov-action@v3
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-

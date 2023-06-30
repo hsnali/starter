@@ -1,0 +1,25 @@
+# Workflow name
+name: 'Code Quality'
+
+# Event for the workflow
+on: pull_request
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+# List of jobs
+jobs:
+  setup:
+    uses: ./.github/workflows/install.yml
+
+  lint:
+    name: Lint
+    needs: setup
+    # Job steps
+    steps:
+        # 👇 Lint
+      - name: Lint
+        run: yarn lint
+
+

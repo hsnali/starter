@@ -7,6 +7,7 @@ on: pull_request
 # List of jobs
 jobs:
   build:
+    name: Performance Budget
     # Operating System
     runs-on: ubuntu-latest
     # Job steps
@@ -20,6 +21,9 @@ jobs:
       #   id: netlify
       #   with:
       #     site_name: 'starter23'
+      - name: Install dependencies
+        # 👇 Install dependencies
+        run: yarn
       - name: Wait for Netlify
         run: yarn wait-on $PREVIEW_URL
       - name: Audit URLs using Lighthouse

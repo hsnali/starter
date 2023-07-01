@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react'
 
 import { ReactComponent as MoonIcon } from '@/assets/icons/moon.svg'
 import { ReactComponent as SunIcon } from '@/assets/icons/sun.svg'
-import { setDarkMode } from '@/utils/setDarkMode'
+import { DARK_CLASS, setDarkMode, THEME_KEY } from '@/utils/setDarkMode'
 
 export const DarkMode = () => {
-  const savedTheme = localStorage.getItem('theme')
-  const [isDark, setIsDarkMode] = useState(savedTheme === 'dark')
+  const savedTheme = localStorage.getItem(THEME_KEY)
+  const [isDark, setIsDarkMode] = useState(savedTheme === DARK_CLASS)
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDark)

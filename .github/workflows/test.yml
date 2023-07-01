@@ -1,5 +1,5 @@
 # Workflow name
-name: 'Code Quality'
+name: 'Test'
 
 # Event for the workflow
 on: pull_request

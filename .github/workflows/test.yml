@@ -16,6 +16,8 @@ jobs:
   lint:
     name: Lint
     needs: setup
+    # Operating System
+    runs-on: ubuntu-latest
     # Job steps
     steps:
         # 👇 Lint

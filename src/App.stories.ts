@@ -22,14 +22,6 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {}
 
-export const DarkMode: Story = {
-  parameters: {
-    localStorage: {
-      [THEME_KEY]: DARK_CLASS
-    }
-  }
-}
-
 export const Mobile: Story = {
   parameters: {
     viewport: {
@@ -40,6 +32,14 @@ export const Mobile: Story = {
     },
     msw: {
       handlers: [mockCatFact({ fact: faker.lorem.words(101) })]
+    }
+  }
+}
+
+export const DarkMode: Story = {
+  parameters: {
+    localStorage: {
+      [THEME_KEY]: DARK_CLASS
     }
   }
 }

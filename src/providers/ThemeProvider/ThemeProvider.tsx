@@ -1,4 +1,4 @@
-import React, { ProviderProps, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { createContext } from 'react'
 
 import { DARK_CLASS, setDarkMode, THEME_KEY } from '@/utils/setDarkMode'
@@ -10,9 +10,13 @@ type ThemeProviderValue = {
   toggleDarkMode: (value?: boolean) => void
 }
 
+type ThemeProviderProps = {
+  children?: React.ReactNode
+}
+
 export const ThemeContext = createContext<ThemeProviderValue>(defaultValue)
 
-export const ThemeProvider: React.FC<ProviderProps<ThemeProviderValue>> = ({ children }) => {
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const savedTheme = localStorage.getItem(THEME_KEY)
   const [isDark, setIsDarkMode] = useState(savedTheme === DARK_CLASS)
 

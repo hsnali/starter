@@ -3,18 +3,18 @@ import { createContext } from 'react'
 
 import { DARK_CLASS, setDarkMode, THEME_KEY } from '@/utils/setDarkMode'
 
-import { defaultValue } from './constants'
-
-type ThemeProviderValue = {
-  isDark: boolean
-  toggleDarkMode: (value?: boolean) => void
-}
-
 type ThemeProviderProps = {
   children?: React.ReactNode
 }
 
-export const ThemeContext = createContext<ThemeProviderValue>(defaultValue)
+const defaultValue = {
+  isDark: false,
+  toggleDarkMode: () => {
+    return
+  }
+}
+
+export const ThemeContext = createContext(defaultValue)
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const savedTheme = localStorage.getItem(THEME_KEY)

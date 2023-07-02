@@ -8,7 +8,11 @@ export const DarkMode = () => {
   const { toggleDarkMode, isDark } = useContext(ThemeContext)
 
   return (
-    <button onClick={() => toggleDarkMode?.()} className="absolute right-4 top-4 z-10 rounded-full p-1">
+    <button
+      data-test-id="dark-mode-button"
+      onClick={() => toggleDarkMode?.()}
+      className="absolute right-4 top-4 z-10 rounded-full p-1"
+    >
       <span className="sr-only">Toggle Dark Mode</span>
       {isDark ? (
         <MoonIcon data-testid="dark-mode-moon" className="text-gray-100" />

@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker'
 import { expect } from '@storybook/jest'
 import type { Meta, StoryObj } from '@storybook/react'
-import { waitFor } from '@storybook/testing-library'
+import { waitFor, within } from '@storybook/testing-library'
 
 import App from '@/App'
 import { useWithReactQuery, withLocalStorage, withTheme } from '@/stories/decorators'
@@ -46,10 +46,14 @@ export const DarkMode: Story = {
   },
 
   play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement)
+
     await step('Should have dark mode class', async () => {
-      await waitFor(() => {
-        expect(canvasElement.ownerDocument.documentElement).toHaveClass(DARK_CLASS)
+      // Wait for dom element
+      await waitFor(async () => {
+        await canvas.findByTestId('dark-mode-button')
       })
+      expect(canvasElement.ownerDocument.documentElement).toHaveClass(DARK_CLASS)
     })
   }
 }

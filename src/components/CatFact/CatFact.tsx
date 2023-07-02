@@ -27,7 +27,7 @@ export const CatFact = () => {
         onClick={handleClick}
         className={`${isLoading && enabled ? 'animate-spin' : ''} my-2 md:order-1`}
       >
-        <img className="w-8" src="/images/nyan.gif" alt="Nyan cat" />
+        <img className="w-8" src="/images/nyan.gif" alt="Nyan cat" data-chromatic="ignore" />
         <span className="sr-only">Get a cat fact</span>
       </button>
 

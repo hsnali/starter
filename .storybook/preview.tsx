@@ -1,7 +1,7 @@
-import { initialize, mswLoader } from 'msw-storybook-addon'
-import type { Preview } from '@storybook/react'
-
 import '../src/index.css'
+
+import type { Preview } from '@storybook/react'
+import { initialize, mswLoader } from 'msw-storybook-addon'
 
 // Initialize MSW
 initialize()

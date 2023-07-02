@@ -3,7 +3,8 @@ import { expect } from '@storybook/jest'
 import type { Meta, StoryObj } from '@storybook/react'
 import { userEvent, waitFor, within } from '@storybook/testing-library'
 
-import { withReactQuery } from '@/stories/decorators'
+import { queryClient } from '@/providers/QueryProvider'
+import { useWithReactQuery } from '@/stories/decorators'
 import { mockCatFact } from '@/tests/handlers/mockCatFact'
 
 import { CatFact } from './CatFact'
@@ -21,7 +22,7 @@ const meta = {
       handlers: [mockCatFact({ fact: testFact })]
     }
   },
-  decorators: [withReactQuery]
+  decorators: [useWithReactQuery]
 } satisfies Meta<typeof CatFact>
 
 export default meta
@@ -44,6 +45,16 @@ export const Primary: Story = {
     })
 
     await step('Should get fact on click', async () => {
+      await userEvent.click(button)
+      expect(button).toHaveClass('animate-spin')
+      await waitFor(async () => {
+        const info = await canvas.findByTestId('cat-fact-info')
+        expect(info).toHaveTextContent(testFact)
+      })
+    })
+
+    await step('Should refetch fact on subsequent click', async () => {
+      await queryClient.clear()
       await userEvent.click(button)
       expect(button).toHaveClass('animate-spin')
       await waitFor(async () => {

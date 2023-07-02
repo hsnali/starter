@@ -45,7 +45,7 @@ export const DarkMode: Story = {
     }
   },
 
-  play: async ({ canvasElement, step }) => {
+  play: async ({ step }) => {
     await step('Should have dark mode class', async () => {
       await waitFor(() => {
         expect(document.documentElement).toHaveClass(DARK_CLASS)

@@ -1,5 +1,7 @@
 import { faker } from '@faker-js/faker'
+import { expect } from '@storybook/jest'
 import type { Meta, StoryObj } from '@storybook/react'
+import { waitFor, within } from '@storybook/testing-library'
 
 import App from '@/App'
 import { useWithReactQuery, withLocalStorage, withTheme } from '@/stories/decorators'
@@ -14,7 +16,7 @@ const meta = {
       [THEME_KEY]: null
     }
   },
-  decorators: [withTheme, withLocalStorage, useWithReactQuery]
+  decorators: [useWithReactQuery, withTheme, withLocalStorage]
 } satisfies Meta<typeof App>
 
 export default meta
@@ -41,5 +43,17 @@ export const DarkMode: Story = {
     localStorage: {
       [THEME_KEY]: DARK_CLASS
     }
+  },
+
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement)
+
+    await step('Should have dark mode class', async () => {
+      // Wait for dom element
+      await waitFor(async () => {
+        await canvas.findByTestId('dark-mode-moon')
+        await expect(canvasElement.ownerDocument.documentElement).toHaveClass(DARK_CLASS)
+      })
+    })
   }
 }

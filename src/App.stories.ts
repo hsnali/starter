@@ -16,7 +16,7 @@ const meta = {
       [THEME_KEY]: null
     }
   },
-  decorators: [withLocalStorage, useWithReactQuery, withTheme]
+  decorators: [useWithReactQuery, withTheme, withLocalStorage]
 } satisfies Meta<typeof App>
 
 export default meta

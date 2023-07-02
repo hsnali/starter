@@ -1,22 +1,23 @@
+import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 
-import { getCatFact } from '@/utils/getCatFact'
+import { CatFactReponse, getCatFact } from '@/utils/getCatFact'
 
 export const CatFact = () => {
-  const [isLoading, setIsLoading] = useState(false)
-  const [info, setInfo] = useState('')
-  const [errorMessage, setErrorMessage] = useState('')
+  const [enabled, setEnabled] = useState(false)
+  const { data, isLoading, isError, error, refetch } = useQuery<CatFactReponse, Error>({
+    queryKey: ['cat-fact'],
+    enabled,
+    queryFn: () => getCatFact(),
+    retry: false
+  })
 
   const handleClick = async () => {
-    setIsLoading(true)
-    try {
-      const { fact } = await getCatFact()
-      setInfo(fact)
-    } catch (error) {
-      const message = (error as Error)?.message
-      setErrorMessage(`Something went wrong: ${message}`)
+    if (enabled) {
+      refetch()
+    } else {
+      setEnabled(true)
     }
-    setIsLoading(false)
   }
 
   return (
@@ -24,24 +25,24 @@ export const CatFact = () => {
       <button
         data-testid="cat-fact-button"
         onClick={handleClick}
-        className={`${isLoading ? 'animate-spin' : ''} my-2 md:order-1`}
+        className={`${isLoading && enabled ? 'animate-spin' : ''} my-2 md:order-1`}
       >
         <img className="w-8" src="/images/nyan.gif" alt="Nyan cat" />
         <span className="sr-only">Get a cat fact</span>
       </button>
 
-      {info && (
+      {data?.fact && (
         <p
           data-testid="cat-fact-info"
           className="text-center text-xs italic text-gray-500 dark:text-gray-300"
         >
-          {info}
+          {data.fact}
         </p>
       )}
 
-      {errorMessage && (
+      {isError && error && (
         <p data-testid="cat-fact-error" className="text-center text-xs italic text-red-800 dark:text-red-300">
-          {errorMessage}
+          {error.toString()}
         </p>
       )}
     </div>

@@ -3,6 +3,8 @@ import { expect } from '@storybook/jest'
 import type { Meta, StoryObj } from '@storybook/react'
 import { userEvent, waitFor, within } from '@storybook/testing-library'
 
+import { queryClient } from '@/providers/QueryProvider'
+import { useWithReactQuery } from '@/stories/decorators'
 import { mockCatFact } from '@/tests/handlers/mockCatFact'
 
 import { CatFact } from './CatFact'
@@ -11,12 +13,16 @@ const testFact = 'Cats are cute'
 
 const meta = {
   component: CatFact,
-
   parameters: {
+    viewport: {
+      defaultViewport: 'mobile2'
+    },
+    queryDevTools: true,
     msw: {
       handlers: [mockCatFact({ fact: testFact })]
     }
-  }
+  },
+  decorators: [useWithReactQuery]
 } satisfies Meta<typeof CatFact>
 
 export default meta
@@ -26,7 +32,7 @@ export const Primary: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement)
 
-    const button = await canvas.findByRole('button')
+    const button = await canvas.findByTestId('cat-fact-button')
 
     await step('Should have image', async () => {
       const image = await canvas.findByRole('img')
@@ -39,6 +45,16 @@ export const Primary: Story = {
     })
 
     await step('Should get fact on click', async () => {
+      await userEvent.click(button)
+      expect(button).toHaveClass('animate-spin')
+      await waitFor(async () => {
+        const info = await canvas.findByTestId('cat-fact-info')
+        expect(info).toHaveTextContent(testFact)
+      })
+    })
+
+    await step('Should refetch fact on subsequent click', async () => {
+      await queryClient.clear()
       await userEvent.click(button)
       expect(button).toHaveClass('animate-spin')
       await waitFor(async () => {
@@ -71,14 +87,14 @@ export const Error: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement)
 
-    const button = await canvas.findByRole('button')
+    const button = await canvas.findByTestId('cat-fact-button')
 
     await step('Should show error message', async () => {
       await userEvent.click(button)
 
       await waitFor(async () => {
         const info = await canvas.findByTestId('cat-fact-error')
-        expect(info).toHaveTextContent('Something went wrong: Failed to fetch cat fact')
+        expect(info).toHaveTextContent('Failed to fetch cat fact')
       })
     })
   }

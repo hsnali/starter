@@ -52,8 +52,8 @@ export const DarkMode: Story = {
       // Wait for dom element
       await waitFor(async () => {
         await canvas.findByTestId('dark-mode-button')
+        await expect(canvasElement.ownerDocument.documentElement).toHaveClass(DARK_CLASS)
       })
-      expect(canvasElement.ownerDocument.documentElement).toHaveClass(DARK_CLASS)
     })
   }
 }

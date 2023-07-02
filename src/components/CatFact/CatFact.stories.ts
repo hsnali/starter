@@ -93,7 +93,7 @@ export const Error: Story = {
       await userEvent.click(button)
 
       await waitFor(async () => {
-        const info = await canvas.queryByTestId('cat-fact-error')
+        const info = await canvas.findByTestId('cat-fact-error')
         expect(info).toHaveTextContent('Failed to fetch cat fact')
       })
     })

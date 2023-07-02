@@ -2,7 +2,7 @@ import { useContext } from 'react'
 
 import { ReactComponent as MoonIcon } from '@/assets/icons/moon.svg'
 import { ReactComponent as SunIcon } from '@/assets/icons/sun.svg'
-import { ThemeContext } from '@/providers/ThemeProvider'
+import { ThemeContext } from '@/providers'
 
 export const DarkMode = () => {
   const { toggleDarkMode, isDark } = useContext(ThemeContext)

@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker'
 import type { Meta, StoryObj } from '@storybook/react'
 
 import App from '@/App'
-import { withLocalStorage, withReactQuery } from '@/stories/decorators'
+import { useWithReactQuery, withLocalStorage } from '@/stories/decorators'
 import { mockCatFact } from '@/tests/handlers/mockCatFact'
 import { DARK_CLASS, THEME_KEY } from '@/utils/setDarkMode'
 
@@ -14,7 +14,7 @@ const meta = {
       [THEME_KEY]: null
     }
   },
-  decorators: [withLocalStorage, withReactQuery]
+  decorators: [withLocalStorage, useWithReactQuery]
 } satisfies Meta<typeof App>
 
 export default meta

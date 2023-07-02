@@ -47,7 +47,7 @@ export const Dark: Story = {
       const moonIcon = await canvas.findByTestId('dark-mode-moon')
       expect(sunIcon).not.toBeInTheDocument()
       expect(moonIcon).toBeInTheDocument()
-      expect(document.documentElement).toHaveClass(DARK_CLASS)
+      expect(canvasElement.ownerDocument.documentElement).toHaveClass(DARK_CLASS)
     })
   }
 }

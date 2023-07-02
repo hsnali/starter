@@ -9,7 +9,7 @@ export const DarkMode = () => {
 
   return (
     <button
-      data-test-id="dark-mode-button"
+      data-testid="dark-mode-button"
       onClick={() => toggleDarkMode?.()}
       className="absolute right-4 top-4 z-10 rounded-full p-1"
     >

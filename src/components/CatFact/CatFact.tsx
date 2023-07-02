@@ -5,13 +5,7 @@ import { CatFactReponse, getCatFact } from '@/utils/getCatFact'
 
 export const CatFact = () => {
   const [enabled, setEnabled] = useState(false)
-  const {
-    data,
-    isLoading,
-    isError,
-    error: errorMessage,
-    refetch
-  } = useQuery<CatFactReponse, Error>({
+  const { data, isLoading, isError, error, refetch } = useQuery<CatFactReponse, Error>({
     queryKey: ['cat-fact'],
     enabled,
     queryFn: () => getCatFact(),
@@ -46,9 +40,9 @@ export const CatFact = () => {
         </p>
       )}
 
-      {isError && errorMessage && (
+      {isError && error && (
         <p data-testid="cat-fact-error" className="text-center text-xs italic text-red-800 dark:text-red-300">
-          {errorMessage.toString()}
+          {error.toString()}
         </p>
       )}
     </div>

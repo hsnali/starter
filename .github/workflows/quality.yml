@@ -26,6 +26,8 @@ jobs:
         # 👇 Lint
       - name: Lint
         run: yarn lint
+      - name: Typescript
+        run: yarn tsc
   test:
     name: Test
     # Operating System

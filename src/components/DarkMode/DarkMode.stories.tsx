@@ -2,13 +2,11 @@ import { expect } from '@storybook/jest'
 import type { Meta, StoryObj } from '@storybook/react'
 import { userEvent, within } from '@storybook/testing-library'
 
-import { withLocalStorage } from '@/stories/decorators'
 import { DARK_CLASS, THEME_KEY } from '@/utils/setDarkMode'
 
 import { DarkMode } from './DarkMode'
 const meta = {
   component: DarkMode,
-  decorators: [withLocalStorage],
   parameters: {
     localStorage: {
       [THEME_KEY]: null

@@ -8,7 +8,8 @@ const meta = {
     alt: 'Logo',
     url: '/',
     label: 'Logo'
-  }
+  },
+  tags: ['autodocs']
 } satisfies Meta<typeof Logo>
 
 export default meta

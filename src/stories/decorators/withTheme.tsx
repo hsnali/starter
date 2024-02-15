@@ -1,5 +1,4 @@
 import type { Decorator } from '@storybook/react'
-import { useEffect } from 'react'
 
 import { ThemeProvider } from '@/providers'
 import { DARK_CLASS, THEME_KEY } from '@/utils/setDarkMode'

@@ -32,10 +32,8 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, theme })
 
   // Update isDark when theme is changed externally
   useEffect(() => {
-    if (theme) {
-      setIsDarkMode(theme === DARK_CLASS)
-      setDarkMode(theme === DARK_CLASS)
-    }
+    setIsDarkMode(theme === DARK_CLASS)
+    setDarkMode(theme === DARK_CLASS)
   }, [theme])
 
   return (

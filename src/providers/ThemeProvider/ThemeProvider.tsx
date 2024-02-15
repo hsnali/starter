@@ -9,23 +9,34 @@ type ThemeProviderValue = {
 }
 
 type ThemeProviderProps = {
+  theme?: string
   children?: React.ReactNode
 }
 
 export const ThemeContext = createContext<ThemeProviderValue>({ isDark: false })
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const savedTheme = localStorage.getItem(THEME_KEY)
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, theme }) => {
+  const savedTheme = theme || localStorage.getItem(THEME_KEY)
   const [isDark, setIsDarkMode] = useState(savedTheme === DARK_CLASS)
 
   const toggleDarkMode = (): void => {
-    setIsDarkMode(!isDark)
-    setDarkMode(!isDark)
+    const currentDark = !isDark
+    setIsDarkMode(currentDark)
+    setDarkMode(currentDark)
   }
 
+  // Set isDark on mount
   useEffect(() => {
     setDarkMode(isDark)
   })
+
+  // Update isDark when theme is changed externally
+  useEffect(() => {
+    if (theme) {
+      setIsDarkMode(theme === DARK_CLASS)
+      setDarkMode(theme === DARK_CLASS)
+    }
+  }, [theme])
 
   return (
     <ThemeContext.Provider

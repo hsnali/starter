@@ -5,7 +5,8 @@ import { userEvent, within } from '@storybook/testing-library'
 import { Button } from './Button'
 
 const meta = {
-  component: Button
+  component: Button,
+  tags: ['autodocs']
 } satisfies Meta<typeof Button>
 
 export default meta

@@ -3,10 +3,15 @@ import '../src/index.css'
 import type { Preview } from '@storybook/react'
 import { initialize, mswLoader } from 'msw-storybook-addon'
 
+import { withTheme } from '../src/stories/decorators'
+import { globalTypes } from './globalTypes'
+
 // Initialize MSW
 initialize()
 
 const preview: Preview = {
+  globalTypes,
+
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
@@ -15,10 +20,17 @@ const preview: Preview = {
         date: /Date$/
       }
     },
-    layout: 'fullscreen'
+    layout: 'fullscreen',
+    options: {
+      storySort: {
+        order: ['Introduction', 'App', 'Components', '*']
+      }
+    }
   },
 
-  loaders: [mswLoader]
+  loaders: [mswLoader],
+
+  decorators: [withTheme]
 }
 
 export default preview

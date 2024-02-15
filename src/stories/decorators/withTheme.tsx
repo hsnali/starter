@@ -9,12 +9,8 @@ export const withTheme: Decorator = (Story, { globals, parameters }) => {
   const isDarkParam = parameters.localStorage ? parameters.localStorage[THEME_KEY] === DARK_CLASS : false
   const theme = isDarkGlobal || isDarkParam ? DARK_CLASS : ''
 
-  console.log('theme chnage', theme)
-
-  useEffect(() => {
-    // Override localStorage - workaroudn for withThemes being high order than withLocalStorage
-    window.localStorage.setItem(THEME_KEY, theme)
-  }, [theme])
+  // Override localStorage - workaroudn for withThemes being high order than withLocalStorage
+  window.localStorage.setItem(THEME_KEY, theme)
 
   return (
     <ThemeProvider theme={theme}>

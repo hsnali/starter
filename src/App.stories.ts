@@ -11,6 +11,7 @@ import { DARK_CLASS, THEME_KEY } from '@/utils/setDarkMode'
 const meta = {
   component: App,
   parameters: {
+    layout: 'fullscreen',
     localStorage: {
       [THEME_KEY]: null
     }

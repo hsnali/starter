@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 
 import { queryClient, QueryProvider } from '@/providers'
 
-export const useWithReactQuery: Decorator = (Story, { parameters }) => {
+export const withReactQuery: Decorator = (Story, { parameters }) => {
   // Reset react query state between stories
   useEffect(() => {
     queryClient.clear()

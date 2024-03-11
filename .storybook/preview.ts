@@ -20,7 +20,6 @@ const preview: Preview = {
         date: /Date$/
       }
     },
-    layout: 'fullscreen',
     options: {
       storySort: {
         order: ['Introduction', 'App', 'Components', '*']

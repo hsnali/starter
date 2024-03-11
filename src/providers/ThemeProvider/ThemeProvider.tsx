@@ -1,45 +1,39 @@
-import React, { useEffect, useState } from 'react'
+import { Atom, useAtom, useSetAtom } from 'jotai'
+import { useHydrateAtoms } from 'jotai/utils'
+import React, { useEffect } from 'react'
 import { createContext } from 'react'
 
+import { isDark, themeAtom } from '@/store/theme'
 import { DARK_CLASS, setDarkMode, THEME_KEY } from '@/utils/setDarkMode'
 
 type ThemeProviderValue = {
-  isDark: boolean
-  toggleDarkMode?: (value?: boolean) => void
+  isDark?: boolean | Atom<boolean>
+  toggleDarkMode?: () => void
 }
 
-type ThemeProviderProps = {
-  theme?: string
-  children?: React.ReactNode
-}
+export const ThemeContext = createContext<ThemeProviderValue>({})
 
-export const ThemeContext = createContext<ThemeProviderValue>({ isDark: false })
-
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, theme }) => {
-  const savedTheme = theme || localStorage.getItem(THEME_KEY)
-  const [isDark, setIsDarkMode] = useState(savedTheme === DARK_CLASS)
+export const ThemeProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
+  const setStoreTheme = useSetAtom(themeAtom)
+  const [showDark] = useAtom(isDark)
+  const restoredTheme = (localStorage.getItem(THEME_KEY) as typeof DARK_CLASS | null) ?? ''
 
   const toggleDarkMode = (): void => {
-    const currentDark = !isDark
-    setIsDarkMode(currentDark)
-    setDarkMode(currentDark)
+    const newTheme = showDark ? '' : DARK_CLASS
+    setStoreTheme(newTheme)
   }
 
-  // Set isDark on mount
-  useEffect(() => {
-    setDarkMode(isDark)
-  })
+  // Intitial theme hydration from localStorage
+  useHydrateAtoms([[themeAtom, restoredTheme]])
 
-  // Update isDark when theme is changed externally
   useEffect(() => {
-    setIsDarkMode(theme === DARK_CLASS)
-    setDarkMode(theme === DARK_CLASS)
-  }, [theme])
+    setDarkMode(showDark)
+  }, [showDark])
 
   return (
     <ThemeContext.Provider
       value={{
-        isDark,
+        isDark: showDark,
         toggleDarkMode
       }}
     >

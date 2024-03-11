@@ -10,7 +10,7 @@ export const DarkMode = () => {
   return (
     <button
       data-testid="dark-mode-button"
-      onClick={() => toggleDarkMode?.()}
+      onClick={toggleDarkMode}
       className="absolute right-4 top-4 z-10 rounded-full p-1"
     >
       <span className="sr-only">Toggle Dark Mode</span>

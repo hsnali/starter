@@ -1,2 +1,2 @@
-export * from './useWithReactQuery'
+export * from './withReactQuery'
 export * from './withTheme'

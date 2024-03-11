@@ -20,5 +20,13 @@ module.exports = {
     'react-refresh/only-export-components': 'warn',
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error'
-  }
+  },
+  overrides: [
+    {
+      files: ['src/stories/**/*.tsx'],
+      rules: {
+        'react-hooks/rules-of-hooks': 'off'
+      }
+    }
+  ]
 }

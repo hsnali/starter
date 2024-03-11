@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { waitFor, within } from '@storybook/testing-library'
 
 import App from '@/App'
-import { useWithReactQuery } from '@/stories/decorators'
+import { withReactQuery } from '@/stories/decorators'
 import { mockCatFact } from '@/tests/handlers/mockCatFact'
 import { DARK_CLASS, THEME_KEY } from '@/utils/setDarkMode'
 
@@ -16,7 +16,7 @@ const meta = {
       [THEME_KEY]: null
     }
   },
-  decorators: [useWithReactQuery]
+  decorators: [withReactQuery]
 } satisfies Meta<typeof App>
 
 export default meta

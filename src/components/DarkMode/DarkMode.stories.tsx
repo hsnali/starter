@@ -34,18 +34,42 @@ export const Primary: Story = {
 }
 
 export const Dark: Story = {
+  parameters: {
+    localStorage: {
+      [THEME_KEY]: DARK_CLASS
+    }
+  },
+
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement)
+
+    await step('Should restore dark theme', async () => {
+      const moonIcon = await canvas.findByTestId('dark-mode-moon')
+      expect(moonIcon).toBeInTheDocument()
+      expect(canvasElement.ownerDocument.documentElement).toHaveClass(DARK_CLASS)
+    })
+  }
+}
+
+export const Toggle: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement)
     const button = await canvas.findByRole('button')
 
-    await step('Should toggle dark theme', async () => {
-      const sunIcon = await canvas.findByTestId('dark-mode-sun')
+    await step('Should toggle to dark theme', async () => {
       await userEvent.click(button)
 
       const moonIcon = await canvas.findByTestId('dark-mode-moon')
-      expect(sunIcon).not.toBeInTheDocument()
       expect(moonIcon).toBeInTheDocument()
       expect(canvasElement.ownerDocument.documentElement).toHaveClass(DARK_CLASS)
+    })
+
+    await step('Should toggle to light theme', async () => {
+      await userEvent.click(button)
+
+      const sunIcon = await canvas.findByTestId('dark-mode-sun')
+      expect(sunIcon).toBeInTheDocument()
+      expect(canvasElement.ownerDocument.documentElement).not.toHaveClass(DARK_CLASS)
     })
   }
 }

@@ -1,4 +1,5 @@
 import { Atom, useAtom, useSetAtom } from 'jotai'
+import { useHydrateAtoms } from 'jotai/utils'
 import React, { useEffect } from 'react'
 import { createContext } from 'react'
 
@@ -15,17 +16,15 @@ export const ThemeContext = createContext<ThemeProviderValue>({})
 export const ThemeProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const setStoreTheme = useSetAtom(themeAtom)
   const [showDark] = useAtom(isDark)
+  const restoredTheme = (localStorage.getItem(THEME_KEY) as typeof DARK_CLASS | null) ?? ''
 
   const toggleDarkMode = (): void => {
     const newTheme = showDark ? '' : DARK_CLASS
     setStoreTheme(newTheme)
   }
 
-  // Initial update theme from localStorage
-  useEffect(() => {
-    const restoredTheme = localStorage.getItem(THEME_KEY)
-    if (restoredTheme === DARK_CLASS) setStoreTheme(restoredTheme)
-  }, [])
+  // Intitial theme hydration from localStorage
+  useHydrateAtoms([[themeAtom, restoredTheme]])
 
   useEffect(() => {
     setDarkMode(showDark)

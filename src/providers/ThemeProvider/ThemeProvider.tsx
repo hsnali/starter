@@ -10,13 +10,9 @@ type ThemeProviderValue = {
   toggleDarkMode?: () => void
 }
 
-type ThemeProviderProps = {
-  children?: React.ReactNode
-}
-
 export const ThemeContext = createContext<ThemeProviderValue>({})
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
+export const ThemeProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const setStoreTheme = useSetAtom(themeAtom)
   const [showDark] = useAtom(isDark)
 

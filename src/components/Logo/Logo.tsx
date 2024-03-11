@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import React from 'react'
 
 export type LogoProps = {
   src: string
@@ -8,7 +8,7 @@ export type LogoProps = {
   alt?: string
 }
 
-export const Logo: FC<LogoProps> = ({ src, url, label, alt, classNames }) => {
+export const Logo: React.FC<LogoProps> = ({ src, url, label, alt, classNames }) => {
   return (
     <a href={url} target="_ blank">
       <img src={src} className={`h-24 transition-all duration-300 ${classNames}`} alt={alt} />

@@ -1,7 +1,6 @@
 import { Atom, useAtom, useSetAtom } from 'jotai'
 import { useHydrateAtoms } from 'jotai/utils'
-import React, { useEffect } from 'react'
-import { createContext } from 'react'
+import React, { createContext, useEffect } from 'react'
 
 import { isDark, themeAtom } from '@/store/theme'
 import { DARK_CLASS, setDarkMode, THEME_KEY } from '@/utils/setDarkMode'

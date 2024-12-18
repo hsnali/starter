@@ -10,7 +10,7 @@ export const Button = () => {
   return (
     <button
       onClick={handleClick}
-      className="h block cursor-pointer rounded-3xl bg-fuchsia-600 px-5 py-2 font-semibold text-white transition-colors hover:shadow-md dark:bg-violet-600"
+      className="h block cursor-pointer rounded-3xl bg-indigo-600 px-5 py-2 font-semibold text-white transition-colors hover:shadow-md dark:bg-violet-600"
     >
       Increment by {count}
     </button>

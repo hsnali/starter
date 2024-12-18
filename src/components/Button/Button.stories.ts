@@ -24,7 +24,7 @@ export const Primary: Story = {
 
     await step('Should increment count on click', async () => {
       await userEvent.click(button)
-      expect(button).toHaveTextContent('Count is 1')
+      expect(button).toHaveTextContent('Increment by 1')
     })
   }
 }

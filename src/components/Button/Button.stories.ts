@@ -19,7 +19,7 @@ export const Primary: Story = {
     const button = await canvas.findByRole('button')
 
     await step('Should have label', async () => {
-      expect(button).toHaveTextContent('Count is 0')
+      expect(button).toHaveTextContent('Increment by 0')
     })
 
     await step('Should increment count on click', async () => {

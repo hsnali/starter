@@ -2,6 +2,7 @@ import '../src/index.css'
 
 import type { Preview } from '@storybook/react-vite'
 import { initialize, mswLoader } from 'msw-storybook-addon'
+
 import { withTheme } from '../src/stories/decorators'
 import { globalTypes } from './globalTypes'
 

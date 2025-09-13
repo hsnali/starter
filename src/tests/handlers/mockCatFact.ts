@@ -1,4 +1,4 @@
-import { http, HttpResponse, delay as mswDelay } from 'msw'
+import { delay as mswDelay,http, HttpResponse } from 'msw'
 
 import { CAT_FACT_API } from '@/utils/getCatFact'
 

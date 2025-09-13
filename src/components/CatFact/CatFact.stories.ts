@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker'
-import { expect } from 'storybook/test'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { userEvent, waitFor, within } from '@storybook/testing-library'
+import { expect } from 'storybook/test'
 
 import { queryClient } from '@/providers'
 import { withReactQuery } from '@/stories/decorators'

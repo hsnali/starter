@@ -6,9 +6,10 @@ import { queryClient, QueryProvider } from '@/providers'
 
 export const withReactQuery: Decorator = (Story, { parameters }) => {
   // Reset react query state between stories
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     queryClient.clear()
-  })
+  }, [])
 
   return (
     <QueryProvider>

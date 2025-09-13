@@ -42,7 +42,7 @@ jobs:
         run: pnpm list
 
       - name: Install playwright
-        run: pnpm exec playwright install --with-deps
+        run: pnpx playwright install --with-deps
 
       - name: Install Dependencies
         run: pnpm install
@@ -82,7 +82,7 @@ jobs:
         run: pnpm list
 
       - name: Install playwright
-        run: pnpm exec playwright install --with-deps
+        run: pnpx playwright install --with-deps
 
       - name: Install Dependencies
         run: pnpm install

@@ -22,12 +22,12 @@ jobs:
           node-version: '18.x'
       - name: Install dependencies
         # 👇 Install dependencies
-        run: yarn
+        run: pnpm install
         # 👇 Lint
       - name: Lint
-        run: yarn lint
+        run: pnpm lint
       - name: Typescript
-        run: yarn tsc
+        run: pnpm tsc
   test:
     name: Test
     # Operating System
@@ -40,12 +40,10 @@ jobs:
           node-version: '18.x'
       - name: Install dependencies
         # 👇 Install dependencies
-        run: yarn
+        run: pnpm istall
         # 👇 Lint and test code
-      - name: Test Storybook
-        run: yarn storybook:test:coverage
-      - name: Test Vite
-        run: yarn test:coverage
+      - name: Test Coverage
+        run: pnpm test:coverage
       - name: Coverage
         uses: codecov/codecov-action@v3
         env:

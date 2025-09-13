@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { DARK_CLASS, setDarkMode, THEME_KEY } from '../setDarkMode'
+import { DARK_CLASS, setDarkMode, THEME_KEY } from './setDarkMode'
 
 describe('utils/setDarkMode', () => {
   it('Should unset local storage theme', async () => {

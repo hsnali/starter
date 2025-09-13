@@ -1,13 +1,12 @@
 import '../src/index.css'
 
-import type { Preview } from '@storybook/react'
+import type { Preview } from '@storybook/react-vite'
 import { initialize, mswLoader } from 'msw-storybook-addon'
-
 import { withTheme } from '../src/stories/decorators'
 import { globalTypes } from './globalTypes'
 
 // Initialize MSW
-initialize()
+initialize({ quiet: true, onUnhandledRequest: 'bypass' })
 
 const preview: Preview = {
   globalTypes,
@@ -24,7 +23,8 @@ const preview: Preview = {
       storySort: {
         order: ['Introduction', 'App', 'Components', '*']
       }
-    }
+    },
+    a11y: { test: 'error' }
   },
 
   loaders: [mswLoader],

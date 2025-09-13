@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 import { mockCatFact } from '@/tests/handlers/mockCatFact'
 import { server } from '@/tests/server'
 
-import { getCatFact } from '../getCatFact'
+import { getCatFact } from './getCatFact'
 
 describe('utils/getCatFact', () => {
   it('Should fetch a cat fact', async () => {

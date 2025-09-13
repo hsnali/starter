@@ -9,7 +9,7 @@
     "start": "vite",
     "preview": "vite preview",
     "build": "tsc && vite build",
-    "check": "tsc -b",
+    "check": "tsc -b --noEmit",
     "lint": "eslint --max-warnings 0",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",

@@ -17,9 +17,14 @@ jobs:
     # Environment variables
     env:
       PREVIEW_URL: https://deploy-preview-${{ github.event.pull_request.number }}--starter23.netlify.app
+
     # Job steps
     steps:
       - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22.x'
+      - uses: pnpm/action-setup@v4
 
       - name: Cache node modules
         id: cache-pnpm

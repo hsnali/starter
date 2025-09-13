@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "type": "module",
   "license": "MIT",
+  "packageManager": "pnpm@10.15.0",
   "scripts": {
     "start": "vite",
     "preview": "vite preview",

@@ -23,7 +23,7 @@ export const ThemeProvider: React.FC<React.PropsWithChildren> = ({ children }) =
   }
 
   // Intitial theme hydration from localStorage
-  useHydrateAtoms([[themeAtom, restoredTheme]])
+  useHydrateAtoms([[themeAtom, restoredTheme]] as const)
 
   useEffect(() => {
     setDarkMode(showDark)

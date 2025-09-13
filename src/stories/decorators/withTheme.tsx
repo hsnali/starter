@@ -1,4 +1,4 @@
-import type { Decorator } from '@storybook/react'
+import type { Decorator } from '@storybook/react-vite'
 import { useSetAtom } from 'jotai'
 import { useEffect } from 'react'
 

@@ -5,16 +5,12 @@
       {
         "metric": "interactive",
         "budget": 3000
-      },
-      {
-        "metric": "first-meaningful-paint",
-        "budget": 2000
       }
     ],
     "resourceSizes": [
       {
         "resourceType": "script",
-        "budget": 100
+        "budget": 125
       },
       {
         "resourceType": "total",

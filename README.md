@@ -1,6 +1,6 @@
 # Starter [![codecov](https://codecov.io/gh/hsnali/starter/branch/main/graph/badge.svg?token=8J45E6LVLD)](https://codecov.io/gh/hsnali/starter)
 
-Just a little repo to scratch away at and play with front end tools
+Just a little repo to scratch away at and play with front end tools.
 
 ## Main branch
 

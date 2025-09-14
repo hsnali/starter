@@ -1,4 +1,5 @@
 {
+  "storybookConfigDir": "src/storybook/config",
   "buildCommand": "pnpm storybook:build",
   "onlyChanged": true,
   "projectId": "Project:6486b8c632b8bb9b0e704c7e",

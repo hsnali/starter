@@ -33,7 +33,7 @@ jobs:
           cache-name: cache-node-modules
         with:
           # pnpm cache files are stored in `~/.pnpm` on Linux/macOS
-          path: ~/.pnpm
+          path: ./node_modules/pnpmcache
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}

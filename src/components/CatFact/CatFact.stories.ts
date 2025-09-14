@@ -4,7 +4,7 @@ import { userEvent, waitFor, within } from '@storybook/testing-library'
 import { expect } from 'storybook/test'
 
 import { queryClient } from '@/providers'
-import { withReactQuery } from '@/stories/decorators'
+import { withReactQuery } from '@/storybook/decorators'
 import { mockCatFact } from '@/tests/handlers/mockCatFact'
 
 import { CatFact } from './CatFact'
@@ -21,6 +21,9 @@ const meta = {
     msw: {
       handlers: [mockCatFact({ fact: testFact })]
     }
+  },
+  args: {
+    className: 'md:!bottom-auto'
   },
   decorators: [withReactQuery]
 } satisfies Meta<typeof CatFact>

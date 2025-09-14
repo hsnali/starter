@@ -1,9 +1,9 @@
-import '../src/index.css'
+import '@/index.css'
 
 import type { Preview } from '@storybook/react-vite'
 import { initialize, mswLoader } from 'msw-storybook-addon'
 
-import { withTheme } from '../src/stories/decorators'
+import { withTheme } from '../decorators'
 import { globalTypes } from './globalTypes'
 
 // Initialize MSW
@@ -13,7 +13,6 @@ const preview: Preview = {
   globalTypes,
 
   parameters: {
-    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,

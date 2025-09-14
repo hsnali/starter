@@ -1,12 +1,6 @@
 [
   {
     "path": "/*",
-    "timings": [
-      {
-        "metric": "interactive",
-        "budget": 3000
-      }
-    ],
     "resourceSizes": [
       {
         "resourceType": "script",

@@ -30,7 +30,7 @@ export default defineConfig({
         // Unit tests
         extends: true,
         test: {
-          name: 'Unit',
+          name: 'unit',
           include: ['src/**/*.test.{ts,tsx}'],
           setupFiles: ['./src/tests/setup.ts']
         }
@@ -47,7 +47,7 @@ export default defineConfig({
           })
         ],
         test: {
-          name: 'Storybook',
+          name: 'storybook',
           browser: {
             enabled: true,
             headless: true,

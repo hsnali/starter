@@ -14,8 +14,8 @@
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:storybook": "vitest test --project storybook",
-    "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build",
+    "storybook": "storybook dev -p 6006 -c src/storybook/config",
+    "storybook:build": "storybook build -c src/storybook/config",
     "chromatic": "chromatic"
   },
   "dependencies": {

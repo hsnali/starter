@@ -14,7 +14,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': '/src'
+      '@': path.resolve(process.cwd(), 'src')
     }
   },
   plugins: [react(), svgr(), tsconfigPaths()],
@@ -22,7 +22,7 @@ export default defineConfig({
     coverage: {
       provider: 'istanbul',
       reportsDirectory: './coverage/vite',
-      exclude: [...coverageConfigDefaults.exclude, 'public/**', 'src/tests/**']
+      exclude: [...coverageConfigDefaults.exclude, 'public/**', 'src/tests/**', 'src/storybook/**']
     },
     environment: 'jsdom',
     projects: [
@@ -42,7 +42,7 @@ export default defineConfig({
           // The plugin will run tests for the stories defined in your Storybook config
           // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
           storybookTest({
-            configDir: path.join(dirname, '.storybook'),
+            configDir: path.join(dirname, 'src/storybook/config'),
             storybookScript: 'storybook --ci'
           })
         ],
@@ -58,7 +58,7 @@ export default defineConfig({
               }
             ]
           },
-          setupFiles: ['.storybook/vitest.setup.ts']
+          setupFiles: ['src/storybook/config/vitest.setup.ts']
         }
       }
     ]

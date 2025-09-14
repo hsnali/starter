@@ -3,7 +3,11 @@ import { useState } from 'react'
 
 import { CatFactReponse, getCatFact } from '@/utils/getCatFact'
 
-export const CatFact = () => {
+type CatFactProps = {
+  className?: string
+}
+
+export const CatFact = ({ className }: CatFactProps) => {
   const [enabled, setEnabled] = useState(false)
   const { data, isLoading, isError, error, refetch } = useQuery<CatFactReponse, Error>({
     queryKey: ['cat-fact'],
@@ -21,7 +25,9 @@ export const CatFact = () => {
   }
 
   return (
-    <div className="flex max-w-md flex-col items-center justify-center md:absolute md:bottom-6">
+    <div
+      className={`flex max-w-md flex-col items-center justify-center md:absolute md:bottom-6 ${className}`}
+    >
       <button
         data-testid="cat-fact-button"
         onClick={handleClick}

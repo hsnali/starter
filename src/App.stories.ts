@@ -4,7 +4,7 @@ import { waitFor, within } from '@storybook/testing-library'
 import { expect } from 'storybook/test'
 
 import App from '@/App'
-import { withReactQuery } from '@/stories/decorators'
+import { withReactQuery } from '@/storybook/decorators'
 import { mockCatFact } from '@/tests/handlers/mockCatFact'
 import { DARK_CLASS, THEME_KEY } from '@/utils/setDarkMode'
 

@@ -41,9 +41,6 @@ jobs:
         continue-on-error: true
         run: pnpm list
 
-      - name: Install playwright
-        run: pnpx playwright install --with-deps
-
       - name: Install Dependencies
         run: pnpm install
 
